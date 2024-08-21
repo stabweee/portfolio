@@ -1,12 +1,8 @@
 import "./App.css";
-import Hero from "./components/hero/Hero";
+import Header from "./components/hero/Header";
 
 function App() {
-  return (
-    <>
-      <Hero />
-    </>
-  );
+  return <Header />;
 }
 
 export default App;

@@ -1,0 +1,103 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
+@media only screen and (max-width: 480px) {
+  .intro {
+    font-family: "Montserrat", sans-serif;
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+    text-align: center;
+    color: var(--white);
+  }
+
+  .move-up {
+    animation: move-up-phone ease 1s forwards;
+  }
+}
+
+#background {
+  background-color: var(--black);
+}
+
+@media only screen and (min-width: 480px) {
+  .intro {
+    font-family: "Montserrat", sans-serif;
+    font-size: 3.75rem;
+    line-height: 1;
+    text-align: center;
+    color: var(--white);
+  }
+
+  .move-up {
+    animation: move-up-comp ease 1s forwards;
+  }
+}
+
+#frame {
+  font-family: "Montserrat", sans-serif;
+  color: var(--white);
+  height: calc(100vh - 50px);
+  width: calc(100vw - 50px);
+}
+
+#frame-line-x {
+  position: absolute;
+  background-color: #fff;
+  opacity: 0.5;
+  animation: grow-x ease 1s forwards;
+}
+
+#frame-line-y {
+  position: absolute;
+  background-color: #fff;
+  opacity: 0.5;
+  animation: grow-y ease 1s forwards;
+}
+
+#page-list-big {
+  margin: 15px;
+  font-weight: 200;
+  scale: 1.2;
+  transition: 0.5s;
+}
+#page-list-normal {
+  margin: 15px;
+  font-weight: 200;
+  scale: 1;
+  transition: 0.5s;
+}
+
+@keyframes move-up-phone {
+  from {
+    transform: translateY(0px);
+  }
+  to {
+    transform: translateY(-300px);
+  }
+}
+
+@keyframes move-up-comp {
+  from {
+    transform: translateY(0px);
+  }
+  to {
+    transform: translateY(-150px);
+  }
+}
+
+@keyframes grow-x {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes grow-y {
+  from {
+    transform: scaleY(0);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
