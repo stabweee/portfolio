@@ -6,7 +6,7 @@ import { useState } from "react";
 import { ReactTyped } from "react-typed";
 
 function Header() {
-  // const media = window.matchMedia("(max-width: 850px)");
+  const media = window.matchMedia("(max-width: 850px)");
 
   // Initialize variables
   const pages = ["About Me", "Projects", "Table Tennis", "Contacts"];
@@ -88,7 +88,9 @@ function Header() {
   // Draw frame
   const frame = (
     <div id="frame" className="fixed overflow-hidden">
-      {loaded === true ? <Cursor hover={hoverInfo[0]} /> : null}
+      {loaded === true && !media.matches ? (
+        <Cursor hover={hoverInfo[0]} />
+      ) : null}
       {frameLines}
       {pageList}
     </div>
