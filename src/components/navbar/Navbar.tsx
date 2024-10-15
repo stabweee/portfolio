@@ -42,7 +42,6 @@ function Navbar({ setLoaded, setHover }: Props) {
             return (
               <li
                 id="page-list"
-                className="page-list-normal"
                 key={page[0]}
                 onMouseEnter={() => {
                   setHover(true);

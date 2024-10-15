@@ -49,7 +49,7 @@ function Cursor({ hover }: { hover: number | boolean }) {
         },
       }}
       animate={cursorVariant}
-      transition={{ type: "tween", ease: backOut }}
+      transition={{ type: "tween", ease: backOut, duration: 0 }}
     />
   );
 }
