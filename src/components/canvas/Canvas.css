@@ -1,0 +1,13 @@
+#canvas-container {
+  position: absolute;
+  height: 90vh;
+  width: calc((100vw - 10vh) / 2);
+  top: 5vh;
+  left: 5vh;
+  overflow: hidden;
+}
+
+#webgl {
+  overflow: hidden;
+  z-index: -1;
+}

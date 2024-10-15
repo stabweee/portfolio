@@ -5,4 +5,6 @@
 :root {
   --white: hsl(0, 0%, 95%);
   --black: hsl(0, 0%, 5%);
+  --yellow: hsl(42, 68%, 82%);
+  cursor: none;
 }

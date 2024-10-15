@@ -1,10 +1,10 @@
 #cursor {
   position: absolute;
   background-color: var(--white);
-  height: 32px;
-  width: 32px;
+  height: 24px;
+  width: 24px;
   border-radius: 50%;
-  z-index: 1;
+  z-index: 10;
   pointer-events: none;
   border: solid;
   border-color: var(--white);

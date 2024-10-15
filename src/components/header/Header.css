@@ -1,0 +1,14 @@
+#about-container {
+  position: absolute;
+  height: 65vh;
+  width: calc((100vw - 10vh) / 3);
+  right: calc(((100vw - 10vh) / 2 - (100vw - 10vh) / 3) / 2);
+  text-align: center;
+  display: flex;
+  align-items: center;
+}
+
+#about-text {
+  font-weight: 100;
+  color: hsl(42, 68%, 82%);
+}

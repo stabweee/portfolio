@@ -1,19 +1,29 @@
-import "./Header.css";
+import "./Hero.css";
 import { Reveal } from "../reveal/Reveal";
-import Cursor from "../cursor/Cursor";
 
-import { useState } from "react";
+import { useEffect } from "react";
 import { ReactTyped } from "react-typed";
+import { Link } from "react-router-dom";
 
-function Header() {
-  const media = window.matchMedia("(max-width: 850px)");
+import { easeInOut, motion, useAnimation } from "framer-motion";
 
+interface Props {
+  loaded: any;
+  setLoaded: any;
+  hoverInfo: any;
+  setHoverInfo: any;
+}
+
+function Hero({ loaded, setLoaded, hoverInfo, setHoverInfo }: Props) {
   // Initialize variables
-  const pages = ["About Me", "Projects", "Table Tennis", "Contacts"];
+  const pages = [
+    ["About Me", "/about"],
+    ["Projects", "/projects"],
+    ["Table Tennis", "/table-tennis"],
+    ["Contacts", "/contacts"],
+  ];
   const name = "<span style='font-weight: 375'>Stanley Hsu</span>";
   const portfolio_txt = '<span style="font-weight: 100"> | Portfolio</span>';
-  const [loaded, setLoaded] = useState(false);
-  const [hoverInfo, setHoverInfo] = useState([false, -1]);
   const [frameHeight, frameWidth] = [
     window.innerHeight - 16,
     window.innerWidth - 16,
@@ -31,20 +41,32 @@ function Header() {
   );
 
   // Typewriter animation
+  const controls = useAnimation();
+  useEffect(() => {
+    if (loaded) {
+      controls.start("loaded");
+    }
+  });
   const intro = (
-    <ReactTyped
+    <motion.div
       className="intro"
-      strings={[name + portfolio_txt]}
-      typeSpeed={50}
-      onComplete={() => {
-        setLoaded(true);
+      variants={{
+        intro: { y: -30 },
+        loaded: { y: -180 },
       }}
-    />
+      initial="intro"
+      animate={controls}
+      transition={{ duration: 0.5, ease: easeInOut }}
+    >
+      <ReactTyped
+        strings={[name + portfolio_txt]}
+        typeSpeed={50}
+        onComplete={() => {
+          setLoaded(true);
+        }}
+      />
+    </motion.div>
   );
-  const moveIntro = (intro: JSX.Element) => {
-    document.getElementsByClassName("intro")[0].classList.add("move-up");
-    return intro;
-  };
 
   // Draw frame lines
   const frameLines = (
@@ -67,54 +89,44 @@ function Header() {
                 ? "page-list-big"
                 : "page-list-normal"
             }
-            key={page}
+            key={page[0]}
             onMouseEnter={() => {
               setHoverInfo([true, index]);
             }}
             onMouseLeave={() => {
               setHoverInfo([false, -1]);
             }}
-            onClick={() => {
-              console.log("clicked");
-            }}
           >
-            {page}
+            <Link
+              className="cursor-none"
+              to={page[1]}
+              onClick={() => {
+                setHoverInfo([false, -1]);
+              }}
+            >
+              {page[0]}
+            </Link>
           </li>
         </Reveal>
       ))}
     </ul>
   );
 
-  // Draw frame
-  const frame = (
-    <div id="frame" className="fixed overflow-hidden">
-      {loaded === true && !media.matches ? (
-        <Cursor hover={hoverInfo[0]} />
-      ) : null}
-      {frameLines}
-      {pageList}
-    </div>
-  );
-
   // Draw hero
   const hero = (
     <>
       {canvas}
-      {frame}
+      {frameLines}
+      {pageList}
     </>
   );
 
   return (
-    <>
-      <div
-        className="h-screen w-screen flex items-center justify-center"
-        id="background"
-      >
-        {loaded === true ? moveIntro(intro) : intro}
-        {loaded === true ? hero : null}
-      </div>
-    </>
+    <div className="h-screen w-screen flex items-center justify-center">
+      {intro}
+      {loaded && hero}
+    </div>
   );
 }
 
-export default Header;
+export default Hero;

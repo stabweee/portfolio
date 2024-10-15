@@ -1,0 +1,38 @@
+#tt-container {
+  position: absolute;
+  height: fill;
+  width: calc((100vw - 10vh) / 2);
+  right: calc(((100vw - 10vh) / 2 - (100vw - 10vh) / 2) / 2);
+  color: var(--yellow);
+  direction: rtl;
+}
+
+#tt-list {
+  height: 100%;
+  max-width: 100%;
+  overflow-y: scroll;
+  mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+  text-align: left;
+}
+#tt-list::-webkit-scrollbar {
+  width: 1px;
+  border-radius: 50%;
+}
+#tt-list::-webkit-scrollbar-thumb {
+  background-color: var(--yellow);
+}
+
+#tt-title {
+  font-size: 1.875rem;
+  font-weight: 200;
+  line-height: 2.25rem;
+  margin-bottom: 1.2rem;
+  margin-left: 1.5rem;
+}
+
+#tt-award {
+  font-weight: 100;
+  margin: 1rem;
+  margin-left: 2.5rem;
+  direction: ltr;
+}
