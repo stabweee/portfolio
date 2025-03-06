@@ -9,7 +9,7 @@ function CanvasElm() {
     const points = useRef(null!);
     return (
       <points position={[0, 0, 0]} ref={points}>
-        <icosahedronGeometry args={[1.75, 3]} />
+        <icosahedronGeometry args={[1.5, 6]} />
         <pointsMaterial color="#f2f2f2" size={0.0225} sizeAttenuation />
       </points>
     );

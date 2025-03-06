@@ -1,14 +1,17 @@
-#about-container {
-  position: absolute;
+.about-text {
+  /* position: absolute;
   height: 65vh;
   width: calc((100vw - 10vh) / 3);
-  right: calc(((100vw - 10vh) / 2 - (100vw - 10vh) / 3) / 2);
+  right: calc(((100vw - 10vh) / 2 - (100vw - 10vh) / 3) / 2); */
+  line-height: 2.25rem;
   text-align: center;
-  display: flex;
-  align-items: center;
+  font-weight: 100;
+  color: var(--yellow);
+  justify-items: center;
 }
 
-#about-text {
-  font-weight: 100;
-  color: hsl(42, 68%, 82%);
+.nonmobile-about-text {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
 }

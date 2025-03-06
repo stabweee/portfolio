@@ -7,7 +7,7 @@ import Projects from "./components/projects/Projects";
 import TableTennis from "./components/tabletennis/TableTennis";
 import Contacts from "./components/contacts/Contacts";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 
 function App() {
@@ -15,6 +15,14 @@ function App() {
 
   const [, setLoaded] = useState(false);
   const [hover, setHover] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 1100); // Adjust breakpoint as needed
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const frameLines = (
     <>
@@ -24,27 +32,37 @@ function App() {
       <div id="frame-line-y" className="w-px h-full left-0 top-0"></div>
     </>
   );
-  const header = <Header />;
+  const header = <Header isMobile={isMobile} />;
   const projects = <Projects setHover={setHover} />;
   const tabletennis = <TableTennis />;
-  const contacts = <Contacts setHover={setHover} />;
-  const navbar = <Navbar setLoaded={setLoaded} setHover={setHover} />;
+  const contacts = <Contacts setHover={setHover} isMobile={isMobile} />;
+  const navbar = (
+    <Navbar setLoaded={setLoaded} setHover={setHover} isMobile={isMobile} />
+  );
   const canvas = <Canvas />;
   const cursor = <Cursor hover={hover} />;
 
   return (
     <div id="background">
-      {canvas}
+      {!isMobile && canvas}
       <div id="frame">
-        {frameLines}
+        {!isMobile && frameLines}
         {!media.matches && cursor}
         {navbar}
-        <Routes>
-          <Route path="/" element={header} />
-          <Route path="/projects" element={projects} />
-          <Route path="/table-tennis" element={tabletennis} />
-          <Route path="/contacts" element={contacts} />
-        </Routes>
+        <div
+          className={
+            isMobile
+              ? "absolute mt-10 h-4/6 w-full flex justify-center"
+              : "content-container"
+          }
+        >
+          <Routes>
+            <Route path="/" element={header} />
+            <Route path="/projects" element={projects} />
+            <Route path="/table-tennis" element={tabletennis} />
+            <Route path="/contacts" element={contacts} />
+          </Routes>
+        </div>
       </div>
     </div>
   );

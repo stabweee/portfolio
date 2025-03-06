@@ -6,14 +6,19 @@ import { FaInstagram } from "react-icons/fa";
 
 interface Props {
   setHover: any;
+  isMobile: any;
 }
 
-function Contacts({ setHover }: Props) {
+function Contacts({ setHover, isMobile }: Props) {
   const iconStyle = { height: 100, width: 100, margin: 4 };
 
   return (
     <div id="contacts-container">
-      <div id="contacts-list">
+      <div
+        className={
+          isMobile ? "contacts-list mobile-contacts-list" : "contacts-list"
+        }
+      >
         <div
           id="icon"
           onMouseEnter={() => {

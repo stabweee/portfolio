@@ -1,18 +1,21 @@
 #contacts-container {
-  position: absolute;
-  height: fill;
+  /* position: absolute;
   width: calc((100vw - 10vh) / 2);
-  right: calc(((100vw - 10vh) / 2 - (100vw - 10vh) / 2) / 2);
+  right: calc(((100vw - 10vh) / 2 - (100vw - 10vh) / 2) / 2); */
+  height: fill;
   color: var(--yellow);
 }
 
-#contacts-list {
+.contacts-list {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   justify-content: center;
   align-items: center;
   height: 90%;
   width: 90%;
+}
+.mobile-contacts-list {
+  width: 60vw;
 }
 
 #icon {

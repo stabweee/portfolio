@@ -11,6 +11,13 @@
   z-index: -2;
 }
 
+.content-container {
+  position: absolute;
+  height: 65vh;
+  width: calc((100vw - 10vh) / 2);
+  right: 0;
+}
+
 #frame {
   font-family: "Montserrat", sans-serif;
   color: var(--white);

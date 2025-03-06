@@ -8,3 +8,12 @@
   --yellow: hsl(42, 68%, 82%);
   cursor: none;
 }
+
+html {
+  box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
