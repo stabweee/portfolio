@@ -88,33 +88,33 @@ function Navbar({ setLoaded, setHover, isMobile }: Props) {
     </div>
   );
 
-  const menu = (
-    <div>
-      {pages.map((page) => (
-        <li
-          id="nonmobile-page-list"
-          key={page[0]}
-          onMouseEnter={() => {
-            setHover(true);
-          }}
-          onMouseLeave={() => {
-            setHover(false);
-          }}
-        >
-          <Link
-            className="cursor-none"
-            to={page[1]}
-            onClick={() => {
-              setLoaded(false);
-              setHover(false);
-            }}
-          >
-            {page[0]}
-          </Link>
-        </li>
-      ))}
-    </div>
-  );
+  // const menu = (
+  //   <div>
+  //     {pages.map((page) => (
+  //       <li
+  //         id="nonmobile-page-list"
+  //         key={page[0]}
+  //         onMouseEnter={() => {
+  //           setHover(true);
+  //         }}
+  //         onMouseLeave={() => {
+  //           setHover(false);
+  //         }}
+  //       >
+  //         <Link
+  //           className="cursor-none"
+  //           to={page[1]}
+  //           onClick={() => {
+  //             setLoaded(false);
+  //             setHover(false);
+  //           }}
+  //         >
+  //           {page[0]}
+  //         </Link>
+  //       </li>
+  //     ))}
+  //   </div>
+  // );
 
   return isMobile ? mobile : nonmobile;
 }
